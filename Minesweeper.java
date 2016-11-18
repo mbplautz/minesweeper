@@ -10,7 +10,25 @@ public class Minesweeper implements MouseListener {
 	private static final int BANNER_HEIGHT = 25;
 	
 	public static void main(String [] args) {
-		final Minesweeper m = new Minesweeper(10, 10, 10);
+		int height = 10;
+		int width = 10;
+		int numberOfMines = 10;
+		if (args.length > 0) {
+			try {
+				height = Integer.parseInt(args[0]);
+			} catch (NumberFormatException fallBackOnDefault) {}
+		}
+		if (args.length > 1) {
+			try {
+				width = Integer.parseInt(args[1]);
+			} catch (NumberFormatException fallBackOnDefault) {}
+		}
+		if (args.length > 2) {
+			try {
+				numberOfMines = Integer.parseInt(args[2]);
+			} catch (NumberFormatException fallBackOnDefault) {}
+		}
+		final Minesweeper m = new Minesweeper(height, width, numberOfMines);
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
